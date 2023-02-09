@@ -14,8 +14,6 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
         env:
           REACT_APP_API_GEO_KEY: ${{ secrets.REACT_APP_API_GEO_KEY }}
           REACT_APP_API_WEATHER_KEY: ${{ secrets.REACT_APP_API_WEATHER_KEY }}
@@ -23,6 +21,8 @@ jobs:
           REACT_APP_API_IMG_URL: ${{ secrets.REACT_APP_API_IMG_URL }}
           REACT_APP_API_WEATHER_GEO_URL: ${{ secrets.REACT_APP_API_WEATHER_GEO_URL }}
           REACT_APP_API_WEATHER_URL: ${{ secrets.REACT_APP_API_WEATHER_URL }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy
