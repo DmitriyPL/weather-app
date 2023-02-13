@@ -9,9 +9,9 @@ import { Home } from "../pages/Home/Home";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-
     <Route path="/weather-app" element={ <Layout /> } >
       <Route index element={ <Home /> } />
     </Route>
   )
 );
+// "/weather-app"

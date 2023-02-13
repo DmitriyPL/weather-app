@@ -5,7 +5,10 @@ export const fetchWeatherByGeo = createAsyncThunk(
   "weather/fetchWeatherByGeo",
   async (params: Geo) => {
     const resp = await fetch(
-      `${process.env.REACT_APP_API_WEATHER_URL}onecall?lat=${params.lat}&lon=${params.lon}&appid=${process.env.REACT_APP_API_WEATHER_KEY}&units=metric&exclude=minutely` as RequestInfo
+      `${process.env.REACT_APP_API_WEATHER_URL}onecall?lat=${params.lat}&lon=${params.lon}&appid=${process.env.REACT_APP_API_WEATHER_KEY}&units=metric&exclude=minutely` as RequestInfo,
+      {
+        credentials: "same-origin",
+      }
     );
     const data = await resp.json();
     return data;
@@ -16,7 +19,10 @@ export const fetchCurrentGeo = createAsyncThunk(
   "geo/fetchCurrentGeo",
   async () => {
     const resp = await fetch(
-      `${process.env.REACT_APP_API_GEO_URL}?apiKey=${process.env.REACT_APP_API_GEO_KEY}` as RequestInfo
+      `${process.env.REACT_APP_API_GEO_URL}?apiKey=${process.env.REACT_APP_API_GEO_KEY}` as RequestInfo,
+      {
+        credentials: "same-origin",
+      }
     );
     const data = await resp.json();
     const geo: Geo = {
@@ -39,7 +45,8 @@ export const fetchGeoByCity = createAsyncThunk(
     const geo: Geo = {
       lat: res.lat,
       lon: res.lon,
-      city: res.name };
+      city: res.name,
+    };
     return geo;
   }
 );
