@@ -8,6 +8,7 @@ export const fetchWeatherByGeo = createAsyncThunk(
       `${process.env.REACT_APP_API_WEATHER_URL}onecall?lat=${params.lat}&lon=${params.lon}&appid=${process.env.REACT_APP_API_WEATHER_KEY}&units=metric&exclude=minutely` as RequestInfo,
       {
         credentials: "same-origin",
+        mode: "cors",
       }
     );
     const data = await resp.json();
@@ -22,6 +23,7 @@ export const fetchCurrentGeo = createAsyncThunk(
       `${process.env.REACT_APP_API_GEO_URL}?apiKey=${process.env.REACT_APP_API_GEO_KEY}` as RequestInfo,
       {
         credentials: "same-origin",
+        mode: "cors",
       }
     );
     const data = await resp.json();
